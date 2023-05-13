@@ -18,7 +18,31 @@ let item3=document.querySelector(".list-group-item:nth-child(3)");
 item3.style.color="white";
 let itemfont=document.querySelectorAll(".list-group-item");
 itemfont[1].style.color="#00ff00";*/
+
+let cardd=document.querySelector("h2");
+cardd.parentElement.style.backgroundColor='#aaaaff';
+
+//let lister=document.querySelector(".list-group");
+//lister.lastChild.style.color="blue";
+//lister.firstChild.textContent="Changed";
+//console.log(lister.firstChild);
+//let lister2=document.querySelector(".list-group-item:nth-child(2)");
+//lister2.nextElementSibling.style.color="red";
+
+let newD=document.createElement("li");
+newD.className="list-group-item";
+
+newD.setAttribute('title', "Item number 5.1");
+
+let txt=document.createTextNode("Item 5.1");
+newD.appendChild(txt);
+
+let ulist=document.querySelector(".list-group");
+let lastlist=document.querySelector("li:nth-child(5)");
+
+ulist.insertBefore(newD, lastlist);
+
 let odditem=document.querySelectorAll("li:nth-child(odd)");
 for(let i=0;i<odditem.length;i++){
-    odditem[i].style.backgroundColor="#00ff00";
+    odditem[i].style.backgroundColor="#f0f0f0";
 }
