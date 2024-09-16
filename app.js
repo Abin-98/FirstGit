@@ -2,6 +2,7 @@ var form = document.getElementById('addForm');
 var itemList = document.getElementById('items');
 var filter = document.getElementById('filter');
 
+
 // Form submit event
 form.addEventListener('submit', addItem);
 // Delete event
@@ -16,6 +17,9 @@ function addItem(e){
   // Get input value
   var newItem = document.getElementById('item').value;
   var newItem2 = document.getElementById('desc').value;
+
+  document.getElementById('item').value="";
+  document.getElementById('desc').value="";
 
   // Create new li element
   var li = document.createElement('li');
@@ -35,7 +39,7 @@ function addItem(e){
   deleteBtn.appendChild(document.createTextNode('Del'));
 
   var EditBtn = document.createElement('button');
-  EditBtn.className = 'btn btn-success btn-sm float-right delete';
+  EditBtn.className = 'btn btn-success btn-sm float-right edit';
   EditBtn.appendChild(document.createTextNode('Edit'));
 
   // Append button to li
@@ -49,8 +53,28 @@ function addItem(e){
 // Remove item
 function removeItem(e){
   if(e.target.classList.contains('delete')){
-    if(confirm('Are You Sure?')){
+    if(confirm('Are You Sure To Delete?')){
       var li = e.target.parentElement;
+      itemList.removeChild(li);
+    }
+  }
+  if(e.target.classList.contains('edit')){
+    if(confirm('Are You Sure To Edit?')){
+      var li=e.target.parentElement
+      var text1 = e.target.parentElement.textContent;
+      console.log(text1);
+      let arr=text1.split(' ');
+      arr.length=arr.length-1;
+      console.log(arr);
+      form.children[0].value=arr[0];
+      if(arr.length===1){
+      form.children[1].value="";}
+      else{
+        form.children[1].value=arr[1];
+      }
+      
+      console.log(form.children[0]);
+      //form.firstElementChild.value=text1;
       itemList.removeChild(li);
     }
   }
